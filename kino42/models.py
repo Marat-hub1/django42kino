@@ -17,7 +17,7 @@ class Country(models.Model):
 class Artist(models.Model):
     name=models.CharField(max_length=100, verbose_name='Имя')
     info=models.TextField(verbose_name='Информация', blank=True, null=True)
-    foto=models.FileField(verbose_name='Фото', blank=True, upload_to='kino42/migrations/static/artist/')
+    foto=models.FileField(verbose_name='Фото', blank=True, upload_to='artist/')
 
     def __str__(self):
         return self.name
@@ -25,7 +25,7 @@ class Artist(models.Model):
 class Director(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     info = models.TextField(verbose_name='Информация', blank=True, null=True)
-    foto = models.FileField(verbose_name='Фото', blank=True, null=True, upload_to='kino42/migrations/static/director/')
+    foto = models.FileField(verbose_name='Фото', blank=True, null=True, upload_to='director/')
 
     def __str__(self):
         return self.name
@@ -47,7 +47,7 @@ class Kino(models.Model):
     artist=models.ManyToManyField(Artist)
     info=models.TextField(verbose_name='Информация',blank=True, null=True)
     year=models.IntegerField(blank=True, null=True, verbose_name='Год')
-    poster= models.FileField(verbose_name='Постер',blank=True, null=True, upload_to='kino42/migrations/static/posters/')
+    poster= models.FileField(verbose_name='Постер',blank=True, null=True, upload_to='posters/')
     rating=models.FloatField(blank=True, null=True,verbose_name='Рэйтинг')
     trailer=models.URLField(blank=True, null=True, verbose_name='Ссылка')
     podpiska=models.ForeignKey(Podpiska, on_delete=models.SET_NULL, blank=True, null=True,
@@ -56,6 +56,9 @@ class Kino(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return f'{self.title}/{self.id}/'
+        #return f'123'
 
 
 
