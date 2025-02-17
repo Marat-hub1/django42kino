@@ -3,13 +3,34 @@
 {% block content %}
     <h2>Фильм {{ kino.title }}</h2>
     <img src="{% static kino.poster %}" alt="" width="450px">
-    <h3> Год выпуска</h3>
-    <h3> Страна выпуска </h3>
+    <h3> Год выпуска {{ kino.year }}</h3>
+    <h3> Страна выпуска {{ kino.country }} </h3>
     <ul>
     {% for one in kino.artist.all %}
-        <li>
+    <li>
         {{ one.name }}
-        </li>
-    </ul>
+    </li>
     {% endfor %}
+    </ul>
+    <h3>Подписка{{ kino.podpiska }}</h3>>
+    <h4>Просмотр фильма</h4>>
+    {% if user.is_authenticated %}
+    {% if user.profile.podpiska.id >= kino.podpiska.id %}
+    <iframe 
+            width="720" height="405" 
+            src={{kino.trailer}}
+            frameBorder="0" allow="clipboard-write; autoplay"
+            allowFullScreen>
+    
+    </iframe>
+    {% else %}
+        <a href="{% url 'kabinet' %}">
+            <button>Купите подписку</button>>
+        </a>>
+    {% endif %}
+    {% else %}
+        <a href="{% url 'login' %}">
+            <button>Авторизуйтесь для просмотра</button>>
+        </a>>
+    {% endif %}
 {% endblock %}
