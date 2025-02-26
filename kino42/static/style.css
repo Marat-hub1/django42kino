@@ -1,0 +1,67 @@
+nav {
+  background-color: #fff; /* Белый фон */
+  border-bottom: 1px solid #eee; /* Тонкая линия внизу */
+  font-family: sans-serif;
+  padding: 10px 0; /* Отступ сверху и снизу */
+}
+
+nav {
+  background-color: #222; /* Темно-серый фон */
+  color: #fff; /* Белый цвет текста по умолчанию */
+  font-family: Arial, sans-serif;
+}
+
+/* Стили для списка пунктов навигации */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Flexbox для горизонтального расположения */
+  justify-content: space-around; /* Равномерное распределение пунктов */
+  align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+/* Стили для пунктов списка */
+nav li {
+  margin: 0;
+}
+
+/* Стили для ссылок внутри навигации */
+nav a {
+  display: inline-block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #ccc; /* Светло-серый цвет текста */
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+/* Стили для ссылок при наведении */
+nav a:hover {
+  background-color: #333; /* Более темный фон при наведении */
+  color: #fff; /* Белый цвет текста при наведении */
+}
+
+/* Стили для активной ссылки */
+nav a.active {
+  background-color: #444; /* Еще более темный фон для активной ссылки */
+  color: #fff; /* Белый цвет текста для активной ссылки */
+  font-weight: bold;
+}
+
+/* Адаптивный дизайн (для мобильных устройств) */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav li {
+    margin: 5px 0;
+  }
+
+  nav a {
+    text-align: center;
+  }
+}

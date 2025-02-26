@@ -1,4 +1,16 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
-    <h2>Каталог Кино</h2>
+    <h2 class="title">Актеры</h2>
+        <ul>
+              {% for one in artist_list %}
+
+        <li>
+  
+    <h2> {{ one.name }}</h2>
+    <img src="{% static one.foto %}" alt="" width="450px">
+    <h3>{{ one.info }}</h3>
+    </li>
+                {% endfor  %}
+            </ul>
 {% endblock %}
